@@ -1,0 +1,72 @@
+<mvc:View controllerName="sbpworksphere.controller.oData_crud"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+        <Table id="employeeTable" items="{/EMPLOYEE}">
+            <columns>
+                <Column >
+                    <Text text="ID"></Text>
+                </Column>
+                <Column >
+                    <Text text="NAME"></Text>
+                </Column>
+                <Column >
+                    <Text text="BLOOD GROUP"></Text>
+                </Column>
+                <Column >
+                    <Text text="DESIGNATION"></Text>
+                </Column>
+                <Column >
+                    <Text text="EMAIL"></Text>
+                </Column>
+                <Column >
+                    <Text text="CONTACT"></Text>
+                </Column>
+                <Column >
+                    <Text text="ADDRESS"></Text>
+                </Column>
+                <Column >
+                    <Text text="BRANCH"></Text>
+                </Column>
+                <Column >
+                    <Text text="Action"></Text>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem >
+                    <cells>
+                    <Text text="{EMP_ID}"></Text>
+                    </cells>
+                    <cells>
+                    <Text text="{EMP_NAME}"></Text>
+                    </cells>
+                    <cells>
+                    <Text text="{EMP_BLODD_GRP}"></Text>
+                    </cells>
+                    <cells>
+                    <Text text="{EMP_DESIG}"></Text>
+                    </cells>
+                    <cells>
+                    <Text text="{EMP_EMAIL}"></Text>
+                    </cells>
+                    <cells>
+                    <Text text="{EMP_CONT}"></Text>
+                    </cells>
+                    <cells>
+                    <Text text="{EMP_ADDRESS}"></Text>
+                    </cells>
+                    <cells>
+                    <Text text="{EMP_BRANCH}"></Text>
+                    </cells>
+                    <cells>
+                    <HBox >
+                        <Button icon="sap-icon://edit"></Button>
+                        <Button icon="sap-icon://delete" type="Reject"></Button>
+                    </HBox>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>
