@@ -2,7 +2,14 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
-
+    <Bar >
+    <contentLeft>
+        <Text text="EMPLOYEE INFORMATION"></Text>
+    </contentLeft>
+    <contentRight>
+        <Button icon="sap-icon://add-employee" text="Create" press="createEmp"></Button>
+    </contentRight>
+    </Bar>
         <Table id="employeeTable" items="{/EMPLOYEE}">
             <columns>
                 <Column >
@@ -61,8 +68,8 @@
                     </cells>
                     <cells>
                     <HBox >
-                        <Button icon="sap-icon://edit"></Button>
-                        <Button icon="sap-icon://delete" type="Reject"></Button>
+                        <Button icon="sap-icon://edit" press="onUpdate"></Button>
+                        <Button icon="sap-icon://delete" type="Reject" press="onDelete"></Button>
                     </HBox>
                     </cells>
                 </ColumnListItem>
