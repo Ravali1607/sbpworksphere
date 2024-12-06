@@ -83,13 +83,11 @@ sap.ui.define([
             var oContext = oButton.getBindingContext();
             var oModel = that.getOwnerComponent().getModel();
             var sPath = oContext.getPath();
-            
             oModel.remove(sPath,{
-                 success:function()
-                 {
+                success:function()
+                {
                      sap.m.MessageToast.show("Employee Deleted");
-            
-                 },
+                },
                  error:function(error)
                  {
                      console.log(error)
@@ -98,10 +96,10 @@ sap.ui.define([
             })
         },
         onUpdate: function(oEvent){
+
             if(!that.dialogUpdate){
                 that.dialogUpdate = sap.ui.xmlfragment("sbpworksphere.fragments.update", that);
-            }
-            
+            } 
             var oData = oEvent.getSource().getBindingContext().getObject();
             sap.ui.getCore().byId("updateId").setValue(oData.EMP_ID);
             sap.ui.getCore().byId("updateName").setValue(oData.EMP_NAME);
@@ -111,8 +109,8 @@ sap.ui.define([
             sap.ui.getCore().byId("updateContact").setValue(oData.EMP_CONT);
             sap.ui.getCore().byId("updateAddress").setValue(oData.EMP_ADDRESS);
             sap.ui.getCore().byId("updateBranch").setValue(oData.EMP_BRANCH);
-
             that.dialogUpdate.open();
+
         },
         updateInfo : function(oEvent){
             
@@ -149,10 +147,10 @@ sap.ui.define([
             }
         })
         that.dialogUpdate.close();
-    }else{
-        MessageToast.show("Please fill all the fields");
-    }
-        },
+        }else{
+            MessageToast.show("Please fill all the fields");
+        }
+    },
         onCancel: function(){
             that.dialogUpdate.close();
         }
