@@ -9,7 +9,7 @@ xmlns= "sap.m"
         <form:SimpleForm>
             <form:content>
                 <Label text="ID NUMBER"></Label>
-                <Input type="Number" id="e_id"></Input>
+                <Input id="e_id"></Input>
                 <Label text="NAME"></Label>
                 <Input type="Text" id="e_name"></Input>
                 <Label text="BLOOD GROUP"></Label>

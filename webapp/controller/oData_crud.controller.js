@@ -50,6 +50,7 @@ sap.ui.define([
                 }
         })
         that.dialogCreate.close();
+        that.onReset();
         },
         onReset:function(){
             sap.ui.getCore().byId("e_id").setValue("");
@@ -77,8 +78,7 @@ sap.ui.define([
                  }
              })
          },
-        onDelete:function(oEvent)
-        {
+        onDelete:function(oEvent){
             var oButton = oEvent.getSource();
             var oContext = oButton.getBindingContext();
             var oModel = that.getOwnerComponent().getModel();
@@ -116,7 +116,7 @@ sap.ui.define([
         },
         updateInfo : function(oEvent){
             
-            var eid = sap.ui.getCore().byId("updateId").getValue();
+            var eid =sap.ui.getCore().byId("updateId").getValue();
             var eName = sap.ui.getCore().byId("updateName").getValue();
             var eBloodgroup = sap.ui.getCore().byId("updateBloodgrp").getValue();
             var eDes = sap.ui.getCore().byId("updateDes").getValue();
@@ -136,7 +136,8 @@ sap.ui.define([
                     EMP_BRANCH : eBranch
                 }
             var oData = that.getOwnerComponent().getModel();
-            var updatePath = "/EMPLOYEE(" + eid + ")";
+            //var updatePath = "/EMPLOYEE(" + eid + ")";
+            var updatePath = `/EMPLOYEE('${eid}')`
             oData.update(updatePath, updateEmp,{
             success: function (response) {
                 console.log(response);
@@ -147,6 +148,7 @@ sap.ui.define([
                 MessageToast.show("Error while updating the data");
             }
         })
+        that.dialogUpdate.close();
     }else{
         MessageToast.show("Please fill all the fields");
     }
