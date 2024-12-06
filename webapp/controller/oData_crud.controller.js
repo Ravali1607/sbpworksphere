@@ -64,6 +64,7 @@ sap.ui.define([
         onClose:function(){
             that.dialogCreate.close();
         },
+        
         onRead: function(){
              var oData = that.getOwnerComponent().getModel();
              oData.read("/EMPLOYEE",{
@@ -82,6 +83,7 @@ sap.ui.define([
             var oContext = oButton.getBindingContext();
             var oModel = that.getOwnerComponent().getModel();
             var sPath = oContext.getPath();
+            
             oModel.remove(sPath,{
                  success:function()
                  {
@@ -95,5 +97,62 @@ sap.ui.define([
                  }
             })
         },
+        onUpdate: function(oEvent){
+            if(!that.dialogUpdate){
+                that.dialogUpdate = sap.ui.xmlfragment("sbpworksphere.fragments.update", that);
+            }
+            
+            var oData = oEvent.getSource().getBindingContext().getObject();
+            sap.ui.getCore().byId("updateId").setValue(oData.EMP_ID);
+            sap.ui.getCore().byId("updateName").setValue(oData.EMP_NAME);
+            sap.ui.getCore().byId("updateBloodgrp").setValue(oData.EMP_BLODD_GRP);
+            sap.ui.getCore().byId("updateDes").setValue(oData.EMP_DESIG);
+            sap.ui.getCore().byId("updateEmail").setValue(oData.EMP_EMAIL);
+            sap.ui.getCore().byId("updateContact").setValue(oData.EMP_CONT);
+            sap.ui.getCore().byId("updateAddress").setValue(oData.EMP_ADDRESS);
+            sap.ui.getCore().byId("updateBranch").setValue(oData.EMP_BRANCH);
+
+            that.dialogUpdate.open();
+        },
+        updateInfo : function(oEvent){
+            
+            var eid = sap.ui.getCore().byId("updateId").getValue();
+            var eName = sap.ui.getCore().byId("updateName").getValue();
+            var eBloodgroup = sap.ui.getCore().byId("updateBloodgrp").getValue();
+            var eDes = sap.ui.getCore().byId("updateDes").getValue();
+            var eEmail = sap.ui.getCore().byId("updateEmail").getValue();
+            var eContact = sap.ui.getCore().byId("updateContact").getValue();
+            var eAddress = sap.ui.getCore().byId("updateAddress").getValue();
+            var eBranch = sap.ui.getCore().byId("updateBranch").getValue();
+            if(eid && eName && eBloodgroup && eDes && eEmail && eContact && eAddress && eBranch){
+                var updateEmp ={
+                    EMP_ID : eid,
+                    EMP_NAME : eName,
+                    EMP_BLODD_GRP : eBloodgroup,
+                    EMP_DESIG : eDes,
+                    EMP_EMAIL : eEmail,
+                    EMP_CONT : eContact,
+                    EMP_ADDRESS : eAddress,
+                    EMP_BRANCH : eBranch
+                }
+            var oData = that.getOwnerComponent().getModel();
+            var updatePath = "/EMPLOYEE(" + eid + ")";
+            oData.update(updatePath, updateEmp,{
+            success: function (response) {
+                console.log(response);
+                MessageToast.show("Employee Data updated");
+            },
+            error: function (error) {
+                console.log(error)
+                MessageToast.show("Error while updating the data");
+            }
+        })
+    }else{
+        MessageToast.show("Please fill all the fields");
+    }
+        },
+        onCancel: function(){
+            that.dialogUpdate.close();
+        }
     });
 });
