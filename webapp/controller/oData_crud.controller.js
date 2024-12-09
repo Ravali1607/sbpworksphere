@@ -77,7 +77,7 @@ sap.ui.define([
                      console.log(error)
                  }
              })
-         },
+        },
         onDelete:function(oEvent){
             var oButton = oEvent.getSource();
             var oContext = oButton.getBindingContext();
