@@ -32,7 +32,7 @@ sap.ui.define([
             }
             
             var oData = that.getOwnerComponent().getModel();
-        oData.create("/EMPLOYEE", oNewEmployee, {
+            oData.create("/EMPLOYEE", oNewEmployee, {
                 success: function (response) {
                     MessageToast.show("Employee Data added successfully");
                     
