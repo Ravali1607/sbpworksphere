@@ -1,7 +1,8 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageToast"
-], (Controller,MessageToast) => {
+    "sap/m/MessageToast",
+    "sap/ui/core/Fragment"
+], (Controller,MessageToast,Fragment) => {
     "use strict";
     var that;
     return Controller.extend("sbpworksphere.controller.oData_crud", {
@@ -19,26 +20,17 @@ sap.ui.define([
             that.dialogCreate.open();
         },
         onSubmit: function(){
-            var eid = sap.ui.getCore().byId("e_id").getValue();
-            var ename = sap.ui.getCore().byId("e_name").getValue();
-            var eblood = sap.ui.getCore().byId("e_bloodgrp").getValue();
-            var edes = sap.ui.getCore().byId("e_des").getValue();
-            var eemail = sap.ui.getCore().byId("e_email").getValue();
-            var econtact = sap.ui.getCore().byId("e_contact").getValue();
-            var eaddress = sap.ui.getCore().byId("e_address").getValue();
-            var ebranch = sap.ui.getCore().byId("e_branch").getValue();
-            if(eid && ename && eblood && edes && eemail && econtact && eaddress && ebranch){
-                var oNewEmployee = {
-                    EMP_ID : eid,
-                    EMP_NAME : ename,
-                    EMP_BLODD_GRP: eblood,
-                    EMP_DESIG : edes,
-                    EMP_EMAIL : eemail,
-                    EMP_CONT : econtact,
-                    EMP_ADDRESS : eaddress,
-                    EMP_BRANCH : ebranch
-                }
+            let oNewEmployee = {
+                EMP_ID : sap.ui.getCore().byId("e_id").getValue(),
+                EMP_NAME : sap.ui.getCore().byId("e_name").getValue(),
+                EMP_BLODD_GRP : sap.ui.getCore().byId("e_bloodgrp").getValue(),
+                EMP_DESIG : sap.ui.getCore().byId("e_des").getValue(),
+                EMP_EMAIL : sap.ui.getCore().byId("e_email").getValue(),
+                EMP_CONT : sap.ui.getCore().byId("e_contact").getValue(),
+                EMP_ADDRESS : sap.ui.getCore().byId("e_address").getValue(),
+                EMP_BRANCH : sap.ui.getCore().byId("e_branch").getValue(),
             }
+            
             var oData = that.getOwnerComponent().getModel();
         oData.create("/EMPLOYEE", oNewEmployee, {
                 success: function (response) {
@@ -49,7 +41,7 @@ sap.ui.define([
                     console.log(error)
                 }
         })
-        that.dialogCreate.close();
+        //that.dialogCreate.close();
         that.onReset();
         },
         onReset:function(){
