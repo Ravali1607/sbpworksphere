@@ -105,29 +105,20 @@ sap.ui.define([
 
         },
         updateInfo : function(oEvent){
+            var updateEmp = {
+                EMP_ID :sap.ui.getCore().byId("updateId").getValue(),
+                EMP_NAME : sap.ui.getCore().byId("updateName").getValue(),
+                EMP_BLODD_GRP : sap.ui.getCore().byId("updateBloodgrp").getValue(),
+                EMP_DESIG : sap.ui.getCore().byId("updateDes").getValue(),
+                EMP_EMAIL : sap.ui.getCore().byId("updateEmail").getValue(),
+                EMP_CONT : sap.ui.getCore().byId("updateContact").getValue(),
+                EMP_ADDRESS : sap.ui.getCore().byId("updateAddress").getValue(),
+                EMP_BRANCH : sap.ui.getCore().byId("updateBranch").getValue(),
+            }
             
-            var eid =sap.ui.getCore().byId("updateId").getValue();
-            var eName = sap.ui.getCore().byId("updateName").getValue();
-            var eBloodgroup = sap.ui.getCore().byId("updateBloodgrp").getValue();
-            var eDes = sap.ui.getCore().byId("updateDes").getValue();
-            var eEmail = sap.ui.getCore().byId("updateEmail").getValue();
-            var eContact = sap.ui.getCore().byId("updateContact").getValue();
-            var eAddress = sap.ui.getCore().byId("updateAddress").getValue();
-            var eBranch = sap.ui.getCore().byId("updateBranch").getValue();
-            if(eid && eName && eBloodgroup && eDes && eEmail && eContact && eAddress && eBranch){
-                var updateEmp ={
-                    EMP_ID : eid,
-                    EMP_NAME : eName,
-                    EMP_BLODD_GRP : eBloodgroup,
-                    EMP_DESIG : eDes,
-                    EMP_EMAIL : eEmail,
-                    EMP_CONT : eContact,
-                    EMP_ADDRESS : eAddress,
-                    EMP_BRANCH : eBranch
-                }
             var oData = that.getOwnerComponent().getModel();
             //var updatePath = "/EMPLOYEE(" + eid + ")";
-            var updatePath = `/EMPLOYEE('${eid}')`
+            var updatePath = `/EMPLOYEE('${updateEmp.EMP_ID}')`
             oData.update(updatePath, updateEmp,{
             success: function (response) {
                 console.log(response);
@@ -139,9 +130,7 @@ sap.ui.define([
             }
         })
         that.dialogUpdate.close();
-        }else{
-            MessageToast.show("Please fill all the fields");
-        }
+        
     },
         onCancel: function(){
             that.dialogUpdate.close();
