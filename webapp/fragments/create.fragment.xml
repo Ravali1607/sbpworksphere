@@ -11,22 +11,88 @@ xmlns= "sap.m"
                 <Label text="ID NUMBER"></Label>
                 <Input id="e_id"></Input>
                 <Label text="NAME"></Label>
-                <Input type="Text" id="e_name"></Input>
+                <Input id="e_name"></Input>
                 <Label text="BLOOD GROUP"></Label>
-                <Input type="Text" id="e_bloodgrp"></Input>
+                <Input id="e_bloodgrp"></Input>
                 <Label text="DESIGNATION"></Label>
-                <Input type="Text" id="e_des"></Input>
+                <Input id="e_des"></Input>
                 <Label text="EMAIL"></Label>
                 <Input type="Email" id="e_email"></Input>
                 <Label text="CONTACT"></Label>
                 <Input type="Number" id="e_contact"></Input>
                 <Label text="ADDRESS"></Label>
-                <Input type="Text" id="e_address"></Input>
+                <Input id="e_address"></Input>
                 <Label text="BRANCH"></Label>
-                <Input type="Text" id="e_branch"></Input>
+                <Input id="e_branch"></Input>
         </form:content>
         </form:SimpleForm>
+        <!-- <Table id="batchTable">
+            <columns>
+                <Column >
+                    <header>
+                    <Label text="ID Number" />
+                    </header>
+                </Column>
+                <Column >
+                <header>
+                    <Label text="Name" />
+                    </header>
+                </Column>
+                <Column >
+                <header>
+                    <Label text="BLOOD GROUP" />
+                    </header>
+                </Column>
+                <Column >
+                <header>
+                    <Label text="DESIGNATION" />
+                    </header>
+                </Column>
+                <Column >
+                <header>
+                    <Label text="EMAIL" />
+                    </header>
+                </Column>
+                <Column >
+                <header>
+                    <Label text="CONTACT" />
+                    </header>
+                </Column>
+                <Column >
+                <header>
+                    <Label text="ADDRESS" />
+                    </header>
+                </Column>
+                <Column >
+                <header>
+                    <Label text="BRANCH" />
+                    </header>
+                </Column>
+                <Column >
+                <header>
+                    <Label  />
+                    </header>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem >
+                    <cells>
+                        <Input ></Input>
+                        <Input ></Input>
+                        <Input ></Input>
+                        <Input ></Input>
+                        <Input ></Input>
+                        <Input ></Input>
+                        <Input ></Input>
+                        <Input ></Input>
+                        <Button icon="sap-icon://add" press="addRow"></Button>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+         -->
         <HBox >
+        <!-- <Button text="Save" icon="sap-icon://save" press="saveBatch"></Button> -->
             <Button text="Submit" press="onSubmit"></Button>
         </HBox>
     <endButton>

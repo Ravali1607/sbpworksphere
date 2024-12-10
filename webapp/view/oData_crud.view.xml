@@ -75,5 +75,12 @@
                 </ColumnListItem>
             </items>
         </Table>
+        <footer>
+            <Bar >
+               <contentRight>
+                    <Button text="Next Page" press="onClick"></Button>
+               </contentRight>
+            </Bar>
+        </footer>
     </Page>
 </mvc:View>

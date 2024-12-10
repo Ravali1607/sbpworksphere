@@ -8,13 +8,27 @@ sap.ui.define([
     return Controller.extend("sbpworksphere.controller.oData_crud", {
         onInit() {
             that = this;
+
+            
+            // let empList = {
+            //     details : [{
+            //     EMP_ID : "",
+            //     EMP_NAME : "",
+            //     EMP_BLODD_GRP : "",
+            //     EMP_DESIG : "",
+            //     EMP_EMAIL : "",
+            //     EMP_CONT : "",
+            //     EMP_ADDRESS : "",
+            //     EMP_BRANCH : "",
+            // }]
+            // };
             var oModel = that.getOwnerComponent().getModel();
             that.getView().setModel(oModel);
-             
              if(!that.dialogCreate){
                 that.dialogCreate = sap.ui.xmlfragment("sbpworksphere.fragments.create", that);
              }
             that.onRead();
+            that.oController = sap.ui.controller("sbpworksphere.controller.firstPage");
         },
         createEmp: function(){
             that.dialogCreate.open();
@@ -41,7 +55,7 @@ sap.ui.define([
                     console.log(error)
                 }
         })
-        //that.dialogCreate.close();
+        that.dialogCreate.close();
         that.onReset();
         },
         onReset:function(){
@@ -134,6 +148,28 @@ sap.ui.define([
     },
         onCancel: function(){
             that.dialogUpdate.close();
+        },
+        // addRow: function(){
+        //     var oTable = that.getView().byId("batchTable");
+        //     var oTableModel = that.getView().getModel().getPropery("details");
+        //     var onewRow = {
+        //         EMP_ID : "",
+        //         EMP_NAME : "",
+        //         EMP_BLODD_GRP : "",
+        //         EMP_DESIG : "",
+        //         EMP_EMAIL : "",
+        //         EMP_CONT : "",
+        //         EMP_ADDRESS : "",
+        //         EMP_BRANCH : "",
+        //     };
+        //     that.oTableModel.push(onewRow);
+        //     that.getView().getModel().setProperty("details",that.oTableModel);
+        // }
+
+        onClick : function(){
+            // var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
+            // oRouter.navTo("firstPage");
+            that.getOwnerComponent().getRouter().navTo("firstPage");
         }
     });
 });

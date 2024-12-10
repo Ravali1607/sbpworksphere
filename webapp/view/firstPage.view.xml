@@ -1,0 +1,73 @@
+<mvc:View xmlns:table="sap.ui.table" controllerName="sbpworksphere.controller.firstPage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page1" title="{i18n>title1}">
+    <Bar >
+        <contentRight>
+            <Button icon="sap-icon://add" press="createPlant"></Button>
+        </contentRight>
+    </Bar>
+            <Table id="plantTable" items="{/PLANTS}">
+            <columns>
+                <Column >
+                    <Text text="ID"></Text>
+                </Column>
+                <Column >
+                    <Text text="NAME"></Text>
+                </Column>
+                <Column >
+                    <Text text="LOCATION"></Text>
+                </Column>
+                <Column >
+                    <Text text="AVATAR"></Text>
+                </Column>
+                <Column >
+                    <Text text="CONTACT"></Text>
+                </Column>
+                <Column >
+                    <Text text="EMAIL"></Text>
+                </Column>
+                <Column >
+                    <Text text="HEAD"></Text>
+                </Column>
+                <Column >
+                    <Text text="REVENUE"></Text>
+                </Column>
+                <Column >
+                    <Text text="COUNT OF CUSTOMERS"></Text>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem >
+                    <cells>
+                    <Text text="{PLANT_ID}"></Text>
+                    </cells>
+                    <cells>
+                    <Text text="{PLANT_NAME}"></Text>
+                    </cells>
+                    <cells>
+                    <Text text="{PLANT_LOC}"></Text>
+                    </cells>
+                    <cells>
+                    <Text text="{PLANT_AVATAR}"></Text>
+                    </cells>
+                    <cells>
+                    <Text text="{PLANT_CONT}"></Text>
+                    </cells>
+                    <cells>
+                    <Text text="{PLANT_EMAIL}"></Text>
+                    </cells>
+                    <cells>
+                    <Text text="{PLANT_HEAD}"></Text>
+                    </cells>
+                    <cells>
+                    <Text text="{PLANT_REVENUE}"></Text>
+                    </cells>
+                    <cells>
+                    <Text text="{PLANT_CUST_COUNT}"></Text>
+                    </cells>
+                </ColumnListItem>
+            </items>
+            </Table>
+    </Page>
+</mvc:View>

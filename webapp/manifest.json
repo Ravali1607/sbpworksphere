@@ -91,9 +91,16 @@
             "routes": [
                 {
                     "name": "RouteoData_crud",
-                    "pattern": ":?query:",
+                    "pattern": "",
                     "target": [
                         "TargetoData_crud"
+                    ]
+                },
+                {
+                    "name": "firstPage",
+                    "pattern": "firstPage",
+                    "target": [
+                        "TargetfirstPage"
                     ]
                 }
             ],
@@ -101,6 +108,10 @@
                 "TargetoData_crud": {
                     "id": "oData_crud",
                     "name": "oData_crud"
+                },
+                "TargetfirstPage": {
+                    "id": "firstPage",
+                    "name": "firstPage"
                 }
             }
         },
