@@ -8,31 +8,18 @@ sap.ui.define([
     return Controller.extend("sbpworksphere.controller.oData_crud", {
         onInit() {
             that = this;
-
-            
-            // let empList = {
-            //     details : [{
-            //     EMP_ID : "",
-            //     EMP_NAME : "",
-            //     EMP_BLODD_GRP : "",
-            //     EMP_DESIG : "",
-            //     EMP_EMAIL : "",
-            //     EMP_CONT : "",
-            //     EMP_ADDRESS : "",
-            //     EMP_BRANCH : "",
-            // }]
-            // };
             var oModel = that.getOwnerComponent().getModel();
             that.getView().setModel(oModel);
              if(!that.dialogCreate){
                 that.dialogCreate = sap.ui.xmlfragment("sbpworksphere.fragments.create", that);
              }
             that.onRead();
-            that.oController = sap.ui.controller("sbpworksphere.controller.firstPage");
         },
+
         createEmp: function(){
             that.dialogCreate.open();
         },
+
         onSubmit: function(){
             let oNewEmployee = {
                 EMP_ID : sap.ui.getCore().byId("e_id").getValue(),
@@ -58,6 +45,7 @@ sap.ui.define([
         that.dialogCreate.close();
         that.onReset();
         },
+
         onReset:function(){
             sap.ui.getCore().byId("e_id").setValue("");
             sap.ui.getCore().byId("e_name").setValue("");
@@ -68,6 +56,7 @@ sap.ui.define([
             sap.ui.getCore().byId("e_address").setValue("");
             sap.ui.getCore().byId("e_branch").setValue("");
         },
+
         onClose:function(){
             that.dialogCreate.close();
         },
@@ -84,6 +73,7 @@ sap.ui.define([
                  }
              })
         },
+
         onDelete:function(oEvent){
             var oButton = oEvent.getSource();
             var oContext = oButton.getBindingContext();
@@ -101,6 +91,7 @@ sap.ui.define([
                  }
             })
         },
+
         onUpdate: function(oEvent){
 
             if(!that.dialogUpdate){
@@ -118,6 +109,7 @@ sap.ui.define([
             that.dialogUpdate.open();
 
         },
+
         updateInfo : function(oEvent){
             var updateEmp = {
                 EMP_ID :sap.ui.getCore().byId("updateId").getValue(),
@@ -143,33 +135,17 @@ sap.ui.define([
                 MessageToast.show("Error while updating the data");
             }
         })
-        that.dialogUpdate.close();
-        
-    },
+        that.dialogUpdate.close();   
+        },
+
         onCancel: function(){
             that.dialogUpdate.close();
         },
-        // addRow: function(){
-        //     var oTable = that.getView().byId("batchTable");
-        //     var oTableModel = that.getView().getModel().getPropery("details");
-        //     var onewRow = {
-        //         EMP_ID : "",
-        //         EMP_NAME : "",
-        //         EMP_BLODD_GRP : "",
-        //         EMP_DESIG : "",
-        //         EMP_EMAIL : "",
-        //         EMP_CONT : "",
-        //         EMP_ADDRESS : "",
-        //         EMP_BRANCH : "",
-        //     };
-        //     that.oTableModel.push(onewRow);
-        //     that.getView().getModel().setProperty("details",that.oTableModel);
+    
+        // onClick : function(){
+        //     // var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
+        //     // oRouter.navTo("firstPage");
+        //     that.getOwnerComponent().getRouter().navTo("firstPage");
         // }
-
-        onClick : function(){
-            // var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
-            // oRouter.navTo("firstPage");
-            that.getOwnerComponent().getRouter().navTo("firstPage");
-        }
     });
 });
